@@ -10,8 +10,8 @@ import org.springframework.web.servlet.config.annotation.CorsRegistry;
 
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.info.Contact;
-import io.swagger.v3.oas.annotations.info.License;
 import io.swagger.v3.oas.annotations.info.Info;
+import io.swagger.v3.oas.annotations.info.License;
 
 @OpenAPIDefinition (info =
 @Info(
@@ -34,23 +34,25 @@ public class DemoApplication {
 		@Override
 		public void configureRepositoryRestConfiguration(RepositoryRestConfiguration config, CorsRegistry cors) {
 			config.setDefaultMediaType(MediaType.APPLICATION_JSON);
+			
 			// config.getExposureConfiguration().disablePutForCreation();
 			//config.useHalAsDefaultJsonMediaType(false);
 			// config.exposeIdsFor(Billionaires.class);
 		}
 		
+//		@Override
+//		public void configureJacksonObjectMapper(ObjectMapper objectMapper) {
+//			objectMapper.registerModule(new SimpleModule("MyCustomModule") {
+//				private static final long serialVersionUID = 1L;
+//				@Override
+//				public void setupModule(SetupContext context) {
+//					AbstractTypeResolver resolver = new SimpleAbstractTypeResolver()
+//							.addMapping(MyInterface.class, MyInterfaceImpl.class));
+//					context.addAbstractTypeResolver(resolver);
+//				}
+//			});
+//		}
+		
 	}
-	
-//	@Override
-//	protected void configureJacksonObjectMapper(ObjectMapper objectMapper) {
-//		objectMapper.registerModule(new SimpleModule("MyCustomModule") {
-//			@Override
-//			public void setupModule(SetupContext context) {
-//				context.addAbstractTypeResolver(
-//						new SimpleAbstractTypeResolver().addMapping(MyInterface.class, MyInterfaceImpl.class));
-//			}
-//		});
-//	}
-
 
 }
