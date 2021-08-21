@@ -9,19 +9,9 @@ import org.springframework.http.MediaType;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
-import io.swagger.v3.oas.annotations.info.Contact;
 import io.swagger.v3.oas.annotations.info.Info;
-import io.swagger.v3.oas.annotations.info.License;
 
-@OpenAPIDefinition (info =
-@Info(
-          title = "the title",
-          version = "0.0",
-          description = "My API",
-          license = @License(name = "Apache 2.0", url = "http://foo.bar"),
-          contact = @Contact(url = "http://gigantic-server.com", name = "Fred", email = "Fred@gigagantic-server.com")
-  )
-)
+@OpenAPIDefinition(info = @Info(title = "the title", version = "1.0", description = "AI API"))
 @SpringBootApplication
 public class DemoApplication {
 
@@ -34,12 +24,12 @@ public class DemoApplication {
 		@Override
 		public void configureRepositoryRestConfiguration(RepositoryRestConfiguration config, CorsRegistry cors) {
 			config.setDefaultMediaType(MediaType.APPLICATION_JSON);
-			
-			// config.getExposureConfiguration().disablePutForCreation();
-			//config.useHalAsDefaultJsonMediaType(false);
-			// config.exposeIdsFor(Billionaires.class);
+			config.setEnableEnumTranslation(true);
+//			config.getExposureConfiguration().disablePutForCreation();
+//			config.useHalAsDefaultJsonMediaType(false);
+//			config.exposeIdsFor(Billionaires.class);
 		}
-		
+
 //		@Override
 //		public void configureJacksonObjectMapper(ObjectMapper objectMapper) {
 //			objectMapper.registerModule(new SimpleModule("MyCustomModule") {
@@ -52,7 +42,7 @@ public class DemoApplication {
 //				}
 //			});
 //		}
-		
+
 	}
 
 }
